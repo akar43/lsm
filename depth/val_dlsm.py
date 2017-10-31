@@ -26,8 +26,8 @@ def validate(args, checkpoint):
     net = MVNet(
         vmin=-0.5,
         vmax=0.5,
-        vox_bs=args.test_batch_size,
-        im_bs=args.test_im_batch,
+        vox_bs=args.val_batch_size,
+        im_bs=args.val_im_batch,
         grid_size=args.nvox,
         im_h=args.im_h,
         im_w=args.im_w,
@@ -55,7 +55,7 @@ def validate(args, checkpoint):
     # Init dataset
     dset = ShapeNet(im_dir=im_dir, split_file=args.val_split_file, rng_seed=1)
     mids = dset.get_smids('val')
-    logging.info('Testing %d models', len(mids))
+    logging.info('Validating %d models', len(mids))
     items = ['shape_id', 'model_id', 'im', 'K', 'R', 'depth']
     dset.init_queue(
         mids,

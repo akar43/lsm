@@ -1,6 +1,6 @@
 {
     "argsjs": null, 
-    "batch_size": 4, 
+    "batch_size": 2, 
     "beta1": 0.9, 
     "ckpt": null, 
     "ckpt_iters": 5000, 
@@ -15,7 +15,7 @@
     "logdir": "./log", 
     "loglevel": "info", 
     "lr": 0.001, 
-    "niters": 100000, 
+    "niters": 200000, 
     "norm": "IN", 
     "nvox": 32, 
     "prefetch_threads": 6, 

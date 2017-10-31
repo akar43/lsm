@@ -98,10 +98,10 @@ def eval_l1_err(pred, gt, mask=None):
     l1_err_masked = np.ma.array(l1_err, mask=np.logical_not(mask))
     batch_err = []
     for b in range(bs):
-        tmp = np.zeros((im_batch))
+        tmp = np.zeros((im_batch, ))
         for imb in range(im_batch):
             tmp[imb] = np.ma.median(l1_err_masked[b, imb])
-        batch_err.append(np.mean(tmp))
+        batch_err.append(np.nanmean(tmp))
     return batch_err
 
 
@@ -112,14 +112,14 @@ def print_depth_stats(mids, err):
         serr[sid] = []
 
     for ex, e in enumerate(err):
-        serr[mids[ex][0]].extend(e)
+        serr[mids[ex][0]].append(e)
 
     table = []
     smean = []
     for s in serr:
-        sm = np.mean(serr[s])
+        sm = np.nanmean(serr[s])
         table.append([s, sm])
         smean.append(sm)
-    table.append(['Mean', np.mean(smean)])
+    table.append(['Mean', np.nanmean(smean)])
     ptable = tabulate(table, headers=['SID', 'L1 error'], floatfmt=".2f")
     return smean, ptable
