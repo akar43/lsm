@@ -90,7 +90,6 @@ def validate(args, checkpoint):
             batch_err = eval_l1_err(pred[:num_batch_items],
                                     batch_data['depth'][:num_batch_items])
 
-            # Update iou dict
             l1_err.extend(batch_err)
             pbar.update(num_batch_items)
     except Exception, e:
