@@ -113,7 +113,7 @@ def parse_args():
     parser.add_argument('--log', type=str, default=None)
     parser.add_argument('--test_batch_size', type=int, default=4)
     parser.add_argument('--test_im_batch', type=int, default=4)
-    parser.add_argument('--eval_thresh', type=float, nargs='+', default=[0.5])
+    parser.add_argument('--eval_thresh', type=float, nargs='+', default=[0.4])
     parser.add_argument('--ckpt', type=str, default=None)
     parser.add_argument('--split', type=str, default='test')
     parser.add_argument('--result_file', type=str, default=None)

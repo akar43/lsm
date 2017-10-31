@@ -129,7 +129,7 @@ def parse_args():
     parser.add_argument('--log', type=str, default=None)
     parser.add_argument('--val_batch_size', type=int, default=4)
     parser.add_argument('--val_im_batch', type=int, default=4)
-    parser.add_argument('--eval_thresh', type=float, nargs='+', default=[0.5])
+    parser.add_argument('--eval_thresh', type=float, nargs='+', default=[0.4])
     parser.add_argument('--loglevel', type=str, default='info')
     parser.add_argument(
         '--val_split_file', type=str, default='data/splits.json')
