@@ -11,3 +11,4 @@ config.py
 *.ply
 *.obj
 *.tar.gz
+data/shapenet_release
