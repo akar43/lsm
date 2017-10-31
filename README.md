@@ -10,12 +10,12 @@ NIPS 2017
 ## Setup
 ### Prerequisites
  - Linux or OSX
- - NVIDIA GPU + CUDA CuDNN (CPU mode and CUDA without CuDNN may work with minimal modification, but untested)
+ - NVIDIA GPU + CUDA + CuDNN (CPU mode and CUDA without CuDNN may work with minimal modification, but untested)
 
 ### Prepare data
 The system requires rendered images, depth maps (for D-LSMs), intrinsic/extrinsic camera matrices and voxelizations of the 3D models for training. A version of these renders and cameras can be downloaded using the provided script.
 ```
-sh prepare_data.sh
+bash prepare_data.sh
 ```
 
 ### Setup virtualenv
@@ -60,7 +60,7 @@ LOG=<log directory used while training. e.g. ./log/2017-10-30_132841/train>
 python voxels/val_vlsm.py --log $LOG --val_split_file data/splits.json
 ```
 
-### Viewing progress on tensorboard
+### Viewing progress on Tensorboard
 You can view the training progress on tensorboard by using the logs written out while training.
 ```
 LOG=<log directory used while training. e.g. ./log/2017-10-30_132841/train>
@@ -69,17 +69,29 @@ tensorboard --logdir $LOG
 
 
 ## Depth LSM (D-LSM)
+The instructions for D-LSMs are very similar to V-LSMs. You can perform training, validation and testing using the following scripts as well as visualize progress on Tensorboard.
+
 ![DLSM](https://people.eecs.berkeley.edu/~akar/lsm/images/depth_results.png)
 
-### Training a Depth LSM
+### Training
 ```
 python depth/train_dlsm.py --argsjs args/args_dlsm.json
 ```
 
+### Validation
+```
+LOG=<log directory used while training. e.g. ./log/2017-10-30_132841/train>
 
+python depth/val_dlsm.py --log $LOG --val_split_file data/splits.json
+```
 
+### Testing
+```
+LOG=<log directory used while training. e.g. ./log/2017-10-30_132841/train>
+CHECKPOINT=<checkpoint to evaluate. e.g. mvnet-100000>
 
-
+python depth/test_dlsm.py --log $LOG --ckpt $CHECKPOINT --test_split_file data/splits.json
+```
 ## Citation
 ```
 @incollection{lsmKarHM2017,
