@@ -1,0 +1,13 @@
+tags
+env*
+*.pyc
+ckpt
+log
+*.html
+.*
+config.py
+*.pdf
+*.png
+*.ply
+*.obj
+*.tar.gz
