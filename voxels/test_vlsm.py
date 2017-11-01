@@ -37,6 +37,7 @@ def run(args):
     net.print_net()
     sess = tf.Session(config=get_session_config())
     saver = tf.train.Saver()
+    logger.info('Restoring from checkpoint: %s', osp.join(args.log, args.ckpt))
     saver.restore(sess, osp.join(args.log, args.ckpt))
     coord = tf.train.Coordinator()
 
@@ -50,7 +51,7 @@ def run(args):
         vox_dir=vox_dir,
         rng_seed=1)
     mids = dset.get_smids(args.split)
-    print('Testing {:d} models'.format(len(mids)))
+    logger.info('Testing {:d} models'.format(len(mids)))
     items = ['shape_id', 'model_id', 'im', 'K', 'R', 'vol']
     dset.init_queue(
         mids,
@@ -103,7 +104,7 @@ def run(args):
         zip(deq_sids, deq_mids), iou, args.eval_thresh)
     print(iou_table)
     if args.result_file is not None:
-        print('Result written to: {:s}'.format(args.result_file))
+        logger.info('Result written to: {:s}'.format(args.result_file))
         with open(args.result_file, 'w') as f:
             f.write(iou_table)
 

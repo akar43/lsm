@@ -58,13 +58,14 @@ def run(args):
     net.print_net()
     sess = tf.Session(config=get_session_config())
     saver = tf.train.Saver()
+    logger.info('Restoring from checkpoint: %s', osp.join(args.log, args.ckpt))
     saver.restore(sess, osp.join(args.log, args.ckpt))
     coord = tf.train.Coordinator()
 
     # Init dataset
     dset = ShapeNet(im_dir=im_dir, split_file=args.test_split_file, rng_seed=1)
     mids = dset.get_smids(args.split)
-    print('Testing {:d} models'.format(len(mids)))
+    logger.info('Testing {:d} models'.format(len(mids)))
     items = ['shape_id', 'model_id', 'im', 'K', 'R', 'depth', 'view_idx']
     dset.init_queue(
         mids,
@@ -130,7 +131,7 @@ def run(args):
             for ix in range(len(deq_mids)):
                 f.write(deq_sids[ix] + '\t' + deq_mids[ix] + '\t' +
                         ' '.join(map(str, deq_view_idx[ix].tolist())) + '\n')
-        print('Test set file: {:s}'.format(args.test_views_file))
+        logger.info('Test set file: {:s}'.format(args.test_views_file))
 
 
 def parse_args():
