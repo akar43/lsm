@@ -8,4 +8,4 @@ SHAPENET_VOX = {
     64: os.path.join(BASE_DIR, 'data/shapenet_release/voxels/modelVoxels64')
 }
 
-SHAPENET_IM = os.path.join(BASE_DIR, 'data/shapenet_release/renders'),
+SHAPENET_IM = os.path.join(BASE_DIR, 'data/shapenet_release/renders')

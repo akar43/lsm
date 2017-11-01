@@ -139,7 +139,7 @@ def parse_args():
     parser.add_argument('--test_im_batch', type=int, default=4)
     parser.add_argument('--ckpt', type=str, default=None)
     parser.add_argument('--split', type=str, default='test')
-    parser.add_argument('--test_set_file', type=str, default=None)
+    parser.add_argument('--test_views_file', type=str, default=None)
     parser.add_argument('--loglevel', type=str, default='info')
     parser.add_argument(
         '--test_split_file', type=str, default='data/splits.json')
