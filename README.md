@@ -4,9 +4,9 @@ This is a Tensorflow implementation of Learnt Stereo Machines as presented in th
 **Learning a Multi-view Stereo Machine**<br>
 [Abhishek Kar](https://people.eecs.berkeley.edu/~akar/), [Christian Häne](https://people.eecs.berkeley.edu/~chaene/), [Jitendra Malik](https://people.eecs.berkeley.edu/~malik/) <br>
 NIPS 2017<br>
-[[blog]](http://bair.berkeley.edu/blog/2017/09/05/unified-3d/) 
-[[paper]](https://people.eecs.berkeley.edu/~akar/lsm/lsm_nips17.pdf)
-[[arxiv]](https://arxiv.org/abs/1708.05375)
+[**[blog]**](http://bair.berkeley.edu/blog/2017/09/05/unified-3d/) 
+[**[paper]**](https://people.eecs.berkeley.edu/~akar/lsm/lsm_nips17.pdf)
+[**[arxiv]**](https://arxiv.org/abs/1708.05375)
 
 ![LSM](https://people.eecs.berkeley.edu/~akar/lsm/images/Network.png)
 
