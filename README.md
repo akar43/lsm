@@ -9,7 +9,7 @@ NIPS 2017
 
 ## Setup
 ### Prerequisites
- - Linux or OSX
+ - Linux or OSX (Tested on Ubuntu 16.04)
  - NVIDIA GPU + CUDA + CuDNN (CPU mode and CUDA without CuDNN may work with minimal modification, but untested)
 
 ### Prepare data
@@ -101,6 +101,7 @@ tensorboard --logdir $LOG
 
 
 ## Citation
+If you use our code, we request you to cite the following work.
 ```
 @incollection{lsmKarHM2017,
   author = {Abhishek Kar and
