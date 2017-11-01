@@ -6,6 +6,11 @@ This is a Tensorflow implementation of Learnt Stereo Machines as presented in th
 NIPS 2017 
 
 ![LSM](https://people.eecs.berkeley.edu/~akar/lsm/images/Network.png)
+<div align=center>
+<img src="https://people.eecs.berkeley.edu/~akar/lsm/images/proj_gif.gif" width=45% style="margin-left:4%; border-right:solid; border-width:1px; border-color:rgba(0,0,0,0.42);">
+<img src="https://people.eecs.berkeley.edu/~akar/lsm/images/unproj_gif.gif" width=45% style="margin-right:4%">
+</div>
+
 
 ## Setup
 ### Prerequisites
