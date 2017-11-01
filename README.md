@@ -60,14 +60,6 @@ LOG=<log directory used while training. e.g. ./log/2017-10-30_132841/train>
 python voxels/val_vlsm.py --log $LOG --val_split_file data/splits.json
 ```
 
-### Viewing progress on Tensorboard
-You can view the training progress on tensorboard by using the logs written out while training.
-```
-LOG=<log directory used while training. e.g. ./log/2017-10-30_132841/train>
-tensorboard --logdir $LOG
-```
-
-
 ## Depth LSM (D-LSM)
 The instructions for D-LSMs are very similar to V-LSMs. You can perform training, validation and testing using the following scripts as well as visualize progress on Tensorboard.
 
@@ -92,6 +84,22 @@ CHECKPOINT=<checkpoint to evaluate. e.g. mvnet-100000>
 
 python depth/test_dlsm.py --log $LOG --ckpt $CHECKPOINT --test_split_file data/splits.json
 ```
+
+## Viewing progress on Tensorboard
+<div width=100%>
+<img src="https://people.eecs.berkeley.edu/~akar/lsm/images/run_vlsm.png" width=49%>
+<img src="https://people.eecs.berkeley.edu/~akar/lsm/images/run_vlsm2.png" width=49%>
+<img src="https://people.eecs.berkeley.edu/~akar/lsm/images/run_dlsm.png" width=98%>
+</div>
+
+You can view the training progress on tensorboard by using the logs written out while training.
+```
+LOG=<log directory used while training. e.g. ./log/2017-10-30_132841/train>
+tensorboard --logdir $LOG
+```
+
+
+
 ## Citation
 ```
 @incollection{lsmKarHM2017,
