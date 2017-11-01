@@ -1,7 +1,7 @@
 # Learnt Stereo Machines
 This is a Tensorflow implementation of Learnt Stereo Machines as presented in the NIPS 2017 paper below. It supports training, validation and testing of Voxel LSMs and Depth LSMs on the ShapeNet dataset.
 
-[**Learning a Multi-view Stereo Machine**](https://people.eecs.berkeley.edu/~akar/deepmvs.pdf)<br>
+[**Learning a Multi-view Stereo Machine**](https://people.eecs.berkeley.edu/~akar/lsm/lsm_nips17.pdf)<br>
 [Abhishek Kar](https://people.eecs.berkeley.edu/~akar/), [Christian Häne](https://people.eecs.berkeley.edu/~chaene/), [Jitendra Malik](https://people.eecs.berkeley.edu/~malik/) <br>
 NIPS 2017 
 
