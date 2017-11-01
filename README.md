@@ -16,7 +16,7 @@ NIPS 2017<br>
  - NVIDIA GPU + CUDA + CuDNN (CPU mode and CUDA without CuDNN may work with minimal modification, but untested)
 
 ### Prepare data
-The system requires rendered images, depth maps (for D-LSMs), intrinsic/extrinsic camera matrices and voxelizations of the 3D models for training. A version of these renders and cameras can be downloaded using the provided script.
+The system requires rendered images, depth maps (for D-LSMs), intrinsic/extrinsic camera matrices and voxelizations of the 3D models for training. A version of these renders and cameras can be downloaded using the provided script. WARNING: The full release is large (21G tar file) and will take some time to unpack.
 ```
 bash prepare_data.sh
 ```

@@ -117,6 +117,7 @@ def run(args):
     deq_mids = np.concatenate(deq_mids, axis=0)[..., 0]
     deq_sids = np.concatenate(deq_sids, axis=0)[..., 0]
     deq_view_idx = np.concatenate(deq_view_idx, axis=0)
+    l1_err = np.array(l1_err)
     sort_idx = np.argsort(deq_mids)
     deq_mids = deq_mids[sort_idx]
     deq_sids = deq_sids[sort_idx]
@@ -124,12 +125,12 @@ def run(args):
     deq_view_idx = deq_view_idx[sort_idx, :]
     stats, stats_table = print_depth_stats(zip(deq_sids, deq_mids), l1_err)
     print(stats_table)
-    if args.test_set_file is not None:
-        with open(args.test_set_file, 'w') as f:
+    if args.test_views_file is not None:
+        with open(args.test_views_file, 'w') as f:
             for ix in range(len(deq_mids)):
                 f.write(deq_sids[ix] + '\t' + deq_mids[ix] + '\t' +
                         ' '.join(map(str, deq_view_idx[ix].tolist())) + '\n')
-        print('Test set file: {:s}'.format(args.test_set_file))
+        print('Test set file: {:s}'.format(args.test_views_file))
 
 
 def parse_args():
