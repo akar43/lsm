@@ -1,8 +1,7 @@
 #!/bin/bash
-cd data
-URL=http://people.eecs.berkeley.edu/~akar/lsm/shapenet_release.tar.gz
-CHECKSUM=61feff8480368e00eb928d4b10a40a40
-FILE=shapenet_release.tar.gz
+URL=http://people.eecs.berkeley.edu/~akar/lsm/models_lsm_v1_small.tar.gz
+CHECKSUM=8dc04d217698b796935c219f1a2ffd75
+FILE=models_lsm_v1_small.tar.gz
 
 if [ -f $FILE ]; then
   echo "File already exists. Checking md5..."
@@ -23,21 +22,4 @@ fi
 wget $URL -O $FILE
 tar xvzf $FILE
 
-echo "Processing voxels"
-cd voxels
-for i in `ls *.tar.gz`
-do
-    echo "Processing $i"
-    tar xvzf $i > /dev/null
-done
-
-echo "Processing renderings"
-cd ../renders
-for i in `ls *.tar.gz`
-do
-    echo "Processing $i"
-    tar xvzf $i > /dev/null && rm $i
-done
-
-cd ../..
 echo "Done. Please run this command again to verify that checksum = $CHECKSUM."
