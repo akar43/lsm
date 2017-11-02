@@ -16,10 +16,14 @@ NIPS 2017<br>
  - NVIDIA GPU + CUDA + CuDNN (CPU mode and CUDA without CuDNN may work with minimal modification, but untested)
 
 ### Prepare data
-The system requires rendered images, depth maps (for D-LSMs), intrinsic/extrinsic camera matrices and voxelizations of the 3D models for training. A version of these renders and cameras can be downloaded using the provided script. WARNING: The full release is large (21G tar file) and will take some time to unpack.
+The system requires rendered images, depth maps (for D-LSMs), intrinsic/extrinsic camera matrices and voxelizations of the 3D models for training. A version of these renders and cameras can be downloaded using the provided script. WARNING: The full release is large (21G tar file) and will take some time to unpack. Use the following script to download all the data required to train LSMs from scratch.
 ```
 bash prepare_data.sh
 ```
+If you are interested in only the voxelizations of the models, we also make them available at the links below.
+
+[**[ShapeNet voxels (32^3 and 64^3) (58M)]**](http://people.eecs.berkeley.edu/~akar/lsm/shapenet_voxels.tar.gz)
+[**[ShapeNet renderings + voxels (21G)]**](http://people.eecs.berkeley.edu/~akar/lsm/shapenet_release.tar.gz)
 
 ### Setup virtualenv
 We recommend using virtualenv to run experiments without modifying your global python distribution.
@@ -39,7 +43,7 @@ export TF_CPP_MIN_LOG_LEVEL=2 #Suppress extra messages from TF
 ```
 
 ## Pretrained Models
-We are releasing pretrained models for V-LSMs and D-LSMs trained on the ShapeNet dataset which can be used to reproduce numbers from the paper. Note that the numbers might differ a little (higher for the code release) due to minor changes in the code after submission. The models can be downloaded with the tensorboard run logs (1.7G) or without (70M) and can be downloaded from the links below. 
+We are releasing pretrained models for V-LSMs and D-LSMs trained on the ShapeNet dataset which can be used to reproduce numbers from the paper. Note that the numbers might differ a little (higher for the code release) due to minor changes in the code after submission. The models can be downloaded with the tensorboard run logs (1.7G) or without (70M) and can be downloaded from the links below. You can also use the [`get_models.sh`](https://github.com/akar43/lsm/get_models.sh) script to download the models.
 
 [**[LSM v1 (with logs)]**](https://people.eecs.berkeley.edu/~akar/lsm/models_lsm_v1.tar.gz) 
 [**[LSM v1 (models only)]**](https://people.eecs.berkeley.edu/~akar/lsm/models_lsm_v1_small.tar.gz)
