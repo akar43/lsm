@@ -7,7 +7,8 @@ from scipy.io import loadmat
 from scipy.ndimage.filters import median_filter
 
 from config import BASE_DIR, SHAPENET_IM
-
+from utils import mkdir_p
+from uuid import uuid4
 with open(os.path.join(BASE_DIR, 'pyntcloud.js'), 'r') as f:
     TEMPLATE_POINTS = f.read()
 
@@ -17,9 +18,18 @@ def array_to_color(array, cmap="Oranges"):
     return s_m.to_rgba(array, norm=False)[:, :-1]
 
 
-def plot_points(xyz, colors=None, size=0.1, axis=False):
+def plot_points(xyz,
+                colors=None,
+                size=0.1,
+                axis=False,
+                title=None,
+                html_out=None):
     positions = xyz.reshape(-1).tolist()
-
+    mkdir_p('vis')
+    if html_out is None:
+        html_out = os.path.join('vis', 'pts{:s}.html'.format(uuid4()))
+    if title is None:
+        title = "PointCloud"
     camera_position = xyz.max(0) + abs(xyz.max(0))
 
     look = xyz.mean(0)
@@ -35,9 +45,10 @@ def plot_points(xyz, colors=None, size=0.1, axis=False):
     else:
         axis_size = 0
 
-    with open("plot_points.html", "w") as html:
+    with open(html_out, "w") as html:
         html.write(
             TEMPLATE_POINTS.format(
+                title=title,
                 camera_x=camera_position[0],
                 camera_y=camera_position[1],
                 camera_z=camera_position[2],
@@ -49,7 +60,7 @@ def plot_points(xyz, colors=None, size=0.1, axis=False):
                 points_size=size,
                 axis_size=axis_size))
 
-    return IFrame("plot_points.html", width=800, height=800)
+    return IFrame(html_out, width=640, height=480)
 
 
 def image_grid(ims):
@@ -59,6 +70,24 @@ def image_grid(ims):
         for x in range(gw):
             disp_im[y * h:(y + 1) * h, x * w:(x + 1) * w, :] = ims[y][x]
     return disp_im
+
+
+def voxel_grid(voxels, thresh=0.4, cmap='viridis'):
+    gh, gw, h, w, d, ch = voxels.shape
+    all_pts, all_clr = [], []
+    for bx in range(gh):
+        for ix in range(gw):
+            pts, clr = voxels2pts(voxels[bx][ix], cmap=cmap)
+            pts[:, 0] += ix * w
+            pts[:, 1] += bx * h
+            all_pts.append(pts)
+            all_clr.append(clr)
+        all_pts.append(pts)
+        all_clr.append(clr)
+    vis_pts, vis_clr = np.concatenate(
+        all_pts, axis=0), np.concatenate(
+            all_clr, axis=0)
+    return vis_pts, vis_clr
 
 
 def voxels2pts(voxels, thresh=0.4, cmap="Oranges"):

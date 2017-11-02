@@ -6,3 +6,4 @@ scikit-image
 matplotlib
 plyfile
 tensorflow-gpu
+jupyter

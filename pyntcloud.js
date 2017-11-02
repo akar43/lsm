@@ -13,6 +13,7 @@
 	background-color: #050505;
 	margin: 0px;
 	overflow: hidden;
+	align: 'center';
 }}
 #logo_container {{
 						position: absolute;
@@ -26,7 +27,7 @@
 
 </head>
 			<body>
-
+				<h1> {title} </h1>
 				<div id="container">
 				</div>
 

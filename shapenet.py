@@ -29,9 +29,11 @@ class ShapeNet(object):
         self.vox_dir = vox_dir
         self.im_dir = im_dir
         self.split_file = split_file
-        self.splits = get_split(split_file)
-        self.shape_ids = (self.splits.keys()
+        self.splits_all = get_split(split_file)
+        self.shape_ids = (self.splits_all.keys()
                           if shape_ids is None else shape_ids)
+        self.splits = {k: self.splits_all[k] for k in self.shape_ids}
+
         self.shape_cls = [
             self.splits[x]['name'].split(',')[0] for x in self.shape_ids
         ]
