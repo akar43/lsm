@@ -126,6 +126,11 @@ def run(args):
     deq_view_idx = deq_view_idx[sort_idx, :]
     stats, stats_table = print_depth_stats(zip(deq_sids, deq_mids), l1_err)
     print(stats_table)
+    if args.result_file is not None:
+        with open(args.result_file, 'w') as f:
+            f.write(stats_table)
+        logger.info('Result written to: {:s}'.format(args.result_file))
+
     if args.test_views_file is not None:
         with open(args.test_views_file, 'w') as f:
             for ix in range(len(deq_mids)):
@@ -142,6 +147,7 @@ def parse_args():
     parser.add_argument('--ckpt', type=str, default=None)
     parser.add_argument('--split', type=str, default='test')
     parser.add_argument('--test_views_file', type=str, default=None)
+    parser.add_argument('--result_file', type=str, default=None)
     parser.add_argument('--loglevel', type=str, default='info')
     parser.add_argument(
         '--test_split_file', type=str, default='data/splits.json')
