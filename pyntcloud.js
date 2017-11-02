@@ -6,11 +6,11 @@
 			<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 				<style>
 					body {{
-						color: #cccccc;
+						color: #050505;
 	font-family: Monospace;
 	font-size: 13px;
 	text-align: center;
-	background-color: #050505;
+	background-color: #ffffff;
 	margin: 0px;
 	overflow: hidden;
 	align: 'center';
@@ -68,7 +68,7 @@
 						container = document.getElementById('container');
 
 						scene = new THREE.Scene();
-
+						scene.background = new THREE.Color(0xffffff)
 						camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
 						camera.position.x = camera_x;
 						camera.position.y = camera_y;
@@ -91,10 +91,9 @@
 		scene.add( points );
 
 
-		renderer = new THREE.WebGLRenderer( {{ antialias: false }} );
+		renderer = new THREE.WebGLRenderer( {{ antialias: false, alpha: true }} );
 		renderer.setPixelRatio( window.devicePixelRatio );
 		renderer.setSize( window.innerWidth, window.innerHeight );
-
 		controls = new THREE.OrbitControls( camera, renderer.domElement );
 		controls.target.copy( new THREE.Vector3(look_x, look_y, look_z) );
 		camera.lookAt( new THREE.Vector3(look_x, look_y, look_z));

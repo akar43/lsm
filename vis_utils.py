@@ -60,10 +60,12 @@ def plot_points(xyz,
                 points_size=size,
                 axis_size=axis_size))
 
-    return IFrame(html_out, width=640, height=480)
+    return IFrame(html_out, width=1024, height=768)
 
 
-def image_grid(ims):
+def image_grid(ims, mask=None):
+    if mask is not None:
+        ims[np.logical_not(mask)] = None
     gh, gw, h, w, ch = ims.shape
     disp_im = np.zeros([gh * h, gw * w, ch])
     for y in range(gh):
@@ -154,6 +156,28 @@ def write_obj(filename, verts, faces):
 def voxel2obj(filename, pred):
     verts, faces = voxel2mesh(pred)
     write_obj(filename, verts, faces)
+
+
+def unproject_depth(d_im, K, R, im=None, dmin=1.0, dmax=3.0):
+    px, py, f = K[0, 2], K[1, 2], K[0, 0]
+    size = d_im.shape
+    x, y = np.meshgrid(range(size[0]), range(size[1]))
+    x, y = (x - px) * d_im / f, (y - py) * d_im / f
+    xyz = np.stack([x, y, d_im], axis=0)
+    xyz = np.reshape(xyz, [3, -1])
+    mask = np.logical_and(xyz[-1, :] < dmax, xyz[-1, :] > dmin)
+    xyz = xyz[:, mask]
+    clr = None
+    if im is not None:
+        im = np.transpose(im, [2, 0, 1])
+        im = np.reshape(im, [3, -1])
+        clr = im[:, mask]
+
+    tr = -np.matmul(R[:3, :3].T, R[:, 3][..., np.newaxis])
+    Rt = np.concatenate([R[:3, :3].T, tr], axis=1)
+    Xw = np.matmul(Rt,
+                   np.concatenate([xyz, np.ones((1, xyz.shape[1]))], axis=0))
+    return np.transpose(Xw), np.transpose(clr)
 
 
 def depth2mesh(classId,
