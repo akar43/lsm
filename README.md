@@ -16,14 +16,18 @@ NIPS 2017<br>
  - NVIDIA GPU + CUDA + CuDNN (CPU mode and CUDA without CuDNN may work with minimal modification, but untested)
 
 ### Prepare data
-The system requires rendered images, depth maps (for D-LSMs), intrinsic/extrinsic camera matrices and voxelizations of the 3D models for training. A version of these renders and cameras can be downloaded using the provided script. WARNING: The full release is large (21G tar file) and will take some time to unpack. Use the following script to download all the data required to train LSMs from scratch.
-```
-bash prepare_data.sh
-```
+The system requires rendered images, depth maps (for D-LSMs), intrinsic/extrinsic camera matrices and voxelizations of the 3D models for training. A version of these renders and cameras can be downloaded using the provided script `prepare_data.sh`. 
+
+**WARNING**: The full release is large (21G tar file) and will take some time to unpack. Use the following script to download all the data required to train LSMs from scratch.
+
 If you are interested in only the voxelizations of the models, we also make them available at the links below.
 
 [**[ShapeNet voxels (32^3 and 64^3) (58M)]**](http://people.eecs.berkeley.edu/~akar/lsm/shapenet_voxels.tar.gz)
 [**[ShapeNet renderings + voxels (21G)]**](http://people.eecs.berkeley.edu/~akar/lsm/shapenet_release.tar.gz)
+
+We also provide a small sample set for running the demos which can be downloaded from below or by using the `download_sample.sh` script.
+
+[**[ShapeNet Sample (8M)]**](http://people.eecs.berkeley.edu/~akar/lsm/shapenet_sample.tar.gz)
 
 ### Setup virtualenv
 We recommend using virtualenv to run experiments without modifying your global python distribution.
@@ -41,6 +45,14 @@ export CUDA_VISIBLE_DEVICES=<GPU to run on> #Specify GPU to run on
 export PYTHONPATH=`pwd`:$PYTHONPATH #Add project root to PYTHONPATH
 export TF_CPP_MIN_LOG_LEVEL=2 #Suppress extra messages from TF
 ```
+
+## Quick Start
+You can use the demo jupyter notebooks [`demo_vlsm.ipynb`](https://github.com/akar43/lsm/blob/master/demo_vlsm.ipynb) and [`demo_dlsm.ipynb`](https://github.com/akar43/lsm/blob/master/demo_dlsm.ipynb) to get started with running pretrained LSMs on the sample data (download within the notebook). The notebooks allow interactive 3D visualizatin of the predicted voxel grids and point clouds!
+
+<div align=center>
+<img src="https://media.giphy.com/media/xT1R9zcVOH3q7PAPkI/giphy.gif" width=45% style="margin-left:4%; border-right:solid; border-width:1px; border-color:rgba(0,0,0,0.42);">
+<img src="https://media.giphy.com/media/d47JnPERY5TEScM0/giphy.gif" width=45% style="margin-right:4%">
+</div>
 
 ## Pretrained Models
 We are releasing pretrained models for V-LSMs and D-LSMs trained on the ShapeNet dataset which can be used to reproduce numbers from the paper. Note that the numbers might differ a little (higher for the code release) due to minor changes in the code after submission. The models can be downloaded with the tensorboard run logs (1.7G) or without (70M) and can be downloaded from the links below. You can also use the [`get_models.sh`](https://github.com/akar43/lsm/blob/master/get_models.sh) script to download the models.
