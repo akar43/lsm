@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 from tabulate import tabulate
 
@@ -87,13 +88,42 @@ def print_iou_stats(mids, iou, thresh, statistic='mean'):
     return siou, '\n'.join(full_table)
 
 
-def eval_l1_err(pred, gt, mask=None):
+def vis_ims(ims, mask=None):
+    if mask is not None:
+        ims[np.logical_not(mask)] = None
+    im_disp = np.reshape(ims, [-1] + list(ims.shape[2:]))
+    im_d = np.concatenate([i for i in im_disp], axis=1)
+    plt.imshow(np.uint8(im_d[..., 0] * 255))
+    plt.axis('off')
+
+
+def eval_l1_err(pred, gt, mask=None, vis=False):
+    pred = pred[:, 0, ...]
     bs, im_batch = pred.shape[0], pred.shape[1]
     if mask is None:
-        mask = (gt < np.max(gt))
+        nanmask = (gt < np.max(gt))
     range_mask = np.logical_and(pred > 2.0 - np.sqrt(3) * 0.5,
                                 pred < 2.0 + np.sqrt(3) * 0.5)
-    mask = np.logical_and(mask, range_mask)
+    mask = np.logical_and(nanmask, range_mask)
+
+    if vis:
+        plt.subplot(5, 1, 1)
+        vis_ims(mask)
+        plt.title("Eval Mask")
+        plt.subplot(5, 1, 2)
+        vis_ims(pred / 10.0, mask=mask)
+        plt.title("Pred")
+        plt.subplot(5, 1, 3)
+        vis_ims(gt / 10.0, mask=nanmask)
+        plt.title("Gt")
+        plt.subplot(5, 1, 4)
+        vis_ims(np.logical_xor(mask, nanmask))
+        plt.title("Gt Mask - Mask")
+        plt.subplot(5, 1, 5)
+        vis_ims(np.abs(pred - gt) / 10.0, mask=mask)
+        plt.title("Masked L1 error")
+        plt.show()
+
     l1_err = np.abs(pred - gt)
     l1_err_masked = np.ma.array(l1_err, mask=np.logical_not(mask))
     batch_err = []
@@ -121,5 +151,5 @@ def print_depth_stats(mids, err):
         table.append([s, sm])
         smean.append(sm)
     table.append(['Mean', np.nanmean(smean)])
-    ptable = tabulate(table, headers=['SID', 'L1 error'], floatfmt=".2f")
+    ptable = tabulate(table, headers=['SID', 'L1 error'], floatfmt=".4f")
     return smean, ptable
