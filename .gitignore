@@ -12,3 +12,4 @@ config.py
 *.obj
 *.tar.gz
 data/shapenet_release
+data/shapenet_sample
