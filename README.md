@@ -38,6 +38,12 @@ export PYTHONPATH=`pwd`:$PYTHONPATH #Add project root to PYTHONPATH
 export TF_CPP_MIN_LOG_LEVEL=2 #Suppress extra messages from TF
 ```
 
+## Pretrained Models
+We are releasing pretrained models for V-LSMs and D-LSMs trained on the ShapeNet dataset which can be used to reproduce numbers from the paper. Note that the numbers might differ a little (higher for the code release) due to minor changes in the code after submission. The models can be downloaded with the tensorboard run logs (1.7G) or without (70M) and can be downloaded from the links below.
+
+[**[LSM v1 (with logs)]**](https://people.eecs.berkeley.edu/~akar/lsm/models_lsm_v1.tar.gz) 
+[**[LSM v1 (models only)]**](https://people.eecs.berkeley.edu/~akar/lsm/models_lsm_v1_small.tar.gz)
+
 ## Voxel LSM (V-LSM)
 ![VLSM](https://people.eecs.berkeley.edu/~akar/lsm/images/voxel_results.png)
 
