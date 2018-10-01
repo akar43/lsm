@@ -32,13 +32,11 @@
 				</div>
 
 				<script src="http://threejs.org/build/three.js"></script>
-				<script src="http://threejs.org/examples/js/Detector.js"></script>
+				<script src="http://threejs.org/examples/js/WebGL.js"></script>
 				<script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>
 				<script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
 
 				<script>
-
-					if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 	var container, stats;
 	var camera, scene, renderer;
