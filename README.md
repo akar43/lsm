@@ -138,6 +138,6 @@ If you use our code, we request you to cite the following work.
   }
 ```
 <div align=center>
-<img src="abhishekkar.info/lsm/images/proj_gif.gif" width=45% style="margin-left:4%; border-right:solid; border-width:1px; border-color:rgba(0,0,0,0.42);">
-<img src="abhishekkar.info/lsm/images/unproj_gif.gif" width=45% style="margin-right:4%">
+<img src="http://abhishekkar.info/lsm/images/proj_gif.gif" width=45% style="margin-left:4%; border-right:solid; border-width:1px; border-color:rgba(0,0,0,0.42);">
+<img src="http://abhishekkar.info/lsm/images/unproj_gif.gif" width=45% style="margin-right:4%">
 </div>
