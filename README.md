@@ -2,13 +2,13 @@
 This is a Tensorflow implementation of Learnt Stereo Machines as presented in the NIPS 2017 paper below. It supports training, validation and testing of Voxel LSMs and Depth LSMs on the ShapeNet dataset.
 
 **Learning a Multi-view Stereo Machine**<br>
-[Abhishek Kar](https://people.eecs.berkeley.edu/~akar/), [Christian Häne](https://people.eecs.berkeley.edu/~chaene/), [Jitendra Malik](https://people.eecs.berkeley.edu/~malik/) <br>
+[Abhishek Kar](http://abhishekkar.info/), [Christian Häne](https://people.eecs.berkeley.edu/~chaene/), [Jitendra Malik](https://people.eecs.berkeley.edu/~malik/) <br>
 NIPS 2017<br>
 [**[blog]**](http://bair.berkeley.edu/blog/2017/09/05/unified-3d/) 
-[**[paper]**](https://people.eecs.berkeley.edu/~akar/lsm/lsm_nips17.pdf)
+[**[paper]**](http://abhishekkar.info/lsm/lsm_nips17.pdf)
 [**[arxiv]**](https://arxiv.org/abs/1708.05375)
 
-![LSM](https://people.eecs.berkeley.edu/~akar/lsm/images/Network.png)
+![LSM](http://abhishekkar.info/lsm/images/Network.png)
 
 ## Setup
 ### Prerequisites
@@ -22,12 +22,12 @@ The system requires rendered images, depth maps (for D-LSMs), intrinsic/extrinsi
 
 If you are interested in only the voxelizations of the models, we also make them available at the links below.
 
-[**[ShapeNet voxels (32^3 and 64^3) (58M)]**](http://people.eecs.berkeley.edu/~akar/lsm/shapenet_voxels.tar.gz)
-[**[ShapeNet renderings + voxels (21G)]**](http://people.eecs.berkeley.edu/~akar/lsm/shapenet_release.tar.gz)
+[**[ShapeNet voxels (32^3 and 64^3) (58M)]**](http://abhishekkar.info/lsm/shapenet_voxels.tar.gz)
+[**[ShapeNet renderings + voxels (21G)]**](http://abhishekkar.info/~akar/lsm/shapenet_release.tar.gz)
 
 We also provide a small sample set for running the demos which can be downloaded from below or by using the `download_sample.sh` script.
 
-[**[ShapeNet Sample (8M)]**](http://people.eecs.berkeley.edu/~akar/lsm/shapenet_sample.tar.gz)
+[**[ShapeNet Sample (8M)]**](http://abhishekkar.info/lsm/shapenet_sample.tar.gz)
 
 ### Setup virtualenv
 We recommend using virtualenv to run experiments without modifying your global python distribution.
@@ -57,11 +57,11 @@ You can use the demo jupyter notebooks [`demo_vlsm.ipynb`](https://github.com/ak
 ## Pretrained Models
 We are releasing pretrained models for V-LSMs and D-LSMs trained on the ShapeNet dataset which can be used to reproduce numbers from the paper. Note that the numbers might differ a little (higher for the code release) due to minor changes in the code after submission. The models can be downloaded with the tensorboard run logs (1.7G) or without (70M) and can be downloaded from the links below. You can also use the [`get_models.sh`](https://github.com/akar43/lsm/blob/master/get_models.sh) script to download the models.
 
-[**[LSM v1 (with logs)]**](https://people.eecs.berkeley.edu/~akar/lsm/models_lsm_v1.tar.gz) 
-[**[LSM v1 (models only)]**](https://people.eecs.berkeley.edu/~akar/lsm/models_lsm_v1_small.tar.gz)
+[**[LSM v1 (with logs)]**](http://abhishekkar.info/lsm/models_lsm_v1.tar.gz) 
+[**[LSM v1 (models only)]**](http://abhishekkar.info/lsm/models_lsm_v1_small.tar.gz)
 
 ## Voxel LSM (V-LSM)
-![VLSM](https://people.eecs.berkeley.edu/~akar/lsm/images/voxel_results.png)
+![VLSM](http://abhishekkar.info/lsm/images/voxel_results.png)
 
 ### Training
 Training a V-LSM on ShapeNet with default arguments. Model checkpoints and tensorboard logs are written out to a unique directory created by default within `./log` displayed at the top after starting training.
@@ -88,7 +88,7 @@ python voxels/val_vlsm.py --log $LOG --val_split_file data/splits.json
 ## Depth LSM (D-LSM)
 The instructions for D-LSMs are very similar to V-LSMs. You can perform training, validation and testing using the following scripts as well as visualize progress on Tensorboard.
 
-![DLSM](https://people.eecs.berkeley.edu/~akar/lsm/images/depth_results.png)
+![DLSM](http://abhishekkar.info/lsm/images/depth_results.png)
 
 ### Training
 ```
@@ -112,9 +112,9 @@ python depth/test_dlsm.py --log $LOG --ckpt $CHECKPOINT --test_split_file data/s
 
 ## Viewing progress on Tensorboard
 <div width=100%>
-<img src="https://people.eecs.berkeley.edu/~akar/lsm/images/run_vlsm.png" width=49%>
-<img src="https://people.eecs.berkeley.edu/~akar/lsm/images/run_vlsm2.png" width=49%>
-<img src="https://people.eecs.berkeley.edu/~akar/lsm/images/run_dlsm.png" width=98%>
+<img src="http://abhishekkar.info/lsm/images/run_vlsm.png" width=49%>
+<img src="http://abhishekkar.info/lsm/images/run_vlsm2.png" width=49%>
+<img src="http://abhishekkar.info/lsm/images/run_dlsm.png" width=98%>
 </div>
 
 You can view the training progress on tensorboard by using the logs written out while training.
@@ -138,6 +138,6 @@ If you use our code, we request you to cite the following work.
   }
 ```
 <div align=center>
-<img src="https://people.eecs.berkeley.edu/~akar/lsm/images/proj_gif.gif" width=45% style="margin-left:4%; border-right:solid; border-width:1px; border-color:rgba(0,0,0,0.42);">
-<img src="https://people.eecs.berkeley.edu/~akar/lsm/images/unproj_gif.gif" width=45% style="margin-right:4%">
+<img src="abhishekkar.info/lsm/images/proj_gif.gif" width=45% style="margin-left:4%; border-right:solid; border-width:1px; border-color:rgba(0,0,0,0.42);">
+<img src="abhishekkar.info/lsm/images/unproj_gif.gif" width=45% style="margin-right:4%">
 </div>
