@@ -57,7 +57,7 @@ You can use the demo jupyter notebooks [`demo_vlsm.ipynb`](https://github.com/ak
 ## Pretrained Models
 We are releasing pretrained models for V-LSMs and D-LSMs trained on the ShapeNet dataset which can be used to reproduce numbers from the paper. Note that the numbers might differ a little (higher for the code release) due to minor changes in the code after submission. The models can be downloaded with the tensorboard run logs (1.7G) or without (70M) and can be downloaded from the links below. You can also use the [`get_models.sh`](https://github.com/akar43/lsm/blob/master/get_models.sh) script to download the models.
 
-[**[LSM v1 (with logs)]**](http://abhishekkar.info/lsm/models_lsm_v1.tar.gz) 
+[**[LSM v1 (with logs)]**](https://drive.google.com/open?id=13ETx5zcYS2chDWfPUA_0mpdM3WyorobI) 
 [**[LSM v1 (models only)]**](https://drive.google.com/file/d/1HAZuKWYxYybDMqb6RA5PLvUes52x3dhm/view?usp=sharing)
 
 ## Voxel LSM (V-LSM)
