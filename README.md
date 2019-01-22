@@ -22,12 +22,12 @@ The system requires rendered images, depth maps (for D-LSMs), intrinsic/extrinsi
 
 If you are interested in only the voxelizations of the models, we also make them available at the links below.
 
-[**[ShapeNet voxels (32^3 and 64^3) (58M)]**](http://abhishekkar.info/lsm/shapenet_voxels.tar.gz)
+[**[ShapeNet voxels (32^3 and 64^3) (58M)]**](https://drive.google.com/open?id=1nDGpXqnde5YhT4zob5bPmpwHGahlWUNl)
 [**[ShapeNet renderings + voxels (21G)]**](http://abhishekkar.info/~akar/lsm/shapenet_release.tar.gz)
 
 We also provide a small sample set for running the demos which can be downloaded from below or by using the `download_sample.sh` script.
 
-[**[ShapeNet Sample (8M)]**](http://abhishekkar.info/lsm/shapenet_sample.tar.gz)
+[**[ShapeNet Sample (8M)]**](https://drive.google.com/open?id=1qg0t_nKMBMz_GhyIUdBK2l_aNqfFewNe)
 
 ### Setup virtualenv
 We recommend using virtualenv to run experiments without modifying your global python distribution.
