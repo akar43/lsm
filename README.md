@@ -12,6 +12,7 @@ NIPS 2017<br>
 
 ## Setup
 ### Prerequisites
+ - Python 2.7
  - Linux or OSX (Tested on Ubuntu 16.04)
  - NVIDIA GPU + CUDA + CuDNN (CPU mode and CUDA without CuDNN may work with minimal modification, but untested)
 
